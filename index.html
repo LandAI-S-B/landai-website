@@ -123,7 +123,7 @@ textarea{min-height:95px;resize:vertical}
 footer{background:var(--ink);padding:3rem 2rem 2rem}
 .f-inner{max-width:1160px;margin:0 auto}
 .f-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
-.f-brand img{height:52px;width:auto;display:block;filter:brightness(0) invert(1);margin-bottom:.6rem}
+.f-brand img{height:52px;width:auto;display:block;border-radius:8px;margin-bottom:.6rem}
 .f-brand p{font-size:.78rem;color:rgba(255,255,255,.35);margin-top:.4rem;max-width:200px;line-height:1.6}
 .f-links h4{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.85rem}
 .f-links a{display:block;font-size:.82rem;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:.45rem;transition:color .15s}
@@ -177,6 +177,55 @@ html{scroll-behavior:smooth}
 .app-card.live-gastwirtschaft::before{background:#175C3D}
 .app-card.demo-feld::before{background:#E2E8F0}
 .app-card.demo-betrieb::before{background:#E2E8F0}
+
+/* ===== MOBILE / HANDY-HOCHFORMAT ===== */
+img,svg{max-width:100%}
+input[type="checkbox"]{width:auto}
+.menu-btn{display:none;background:none;border:1px solid var(--border);border-radius:8px;width:42px;height:42px;cursor:pointer;place-items:center;padding:0;flex-shrink:0}
+.menu-btn svg{width:22px;height:22px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round}
+@media(max-width:960px){
+  .trust-grid{grid-template-columns:1fr 1fr!important;gap:1.25rem!important}
+  .about-grid{grid-template-columns:1fr!important;gap:2.5rem!important}
+  .ref-grid{grid-template-columns:1fr!important}
+  .imp-grid{grid-template-columns:1fr!important;gap:2rem!important}
+}
+@media(max-width:700px){
+  .menu-btn{display:grid}
+  nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);flex-direction:column;align-items:stretch;gap:0;padding:.4rem 1.25rem 1.1rem;box-shadow:0 16px 32px rgba(15,23,42,.1)}
+  nav.open .nav-links{display:flex}
+  nav .nav-links li{border-top:1px solid var(--border)}
+  nav .nav-links li:first-child,nav .nav-links li:last-child{border-top:none}
+  nav .nav-links a{display:block;padding:.95rem 0;font-size:1rem;color:var(--ink)}
+  nav .nav-links .nav-btn{display:block;text-align:center;margin-top:.6rem;padding:.85rem 1.2rem!important}
+}
+@media(max-width:600px){
+  .nav-wrap{padding:0 1.15rem;height:64px}
+  .logo img{height:44px}
+  .hero{min-height:auto;padding:6.5rem 1.25rem 3.25rem}
+  .hero h1{font-size:2rem}
+  .hero-sub{font-size:.98rem}
+  .hero-ctas{margin-bottom:2.25rem}
+  .hero-ctas .btn-p,.hero-ctas .btn-s{flex:1 1 100%;text-align:center}
+  .hero-stats{gap:1.1rem;flex-wrap:wrap}
+  .leistungen,.webapps,.prozess,.preise,.kontakt{padding:4rem 1.25rem}
+  .sec-pad{padding:4rem 1.25rem!important}
+  .trust-sec{padding:2.25rem 1.25rem!important}
+  .sh{margin-bottom:2.25rem}
+  .l-card{padding:1.6rem}
+  .p-step{padding:1.6rem}
+  .k-wrap{gap:2.5rem;margin-top:2rem}
+  .k-form{padding:1.4rem 1.2rem}
+  input,select,textarea{font-size:16px}
+  .modal-overlay{padding:.9rem}
+  .m-body{padding:1.25rem 1.1rem}
+  footer{padding:2.5rem 1.25rem 1.5rem}
+  .f-top{flex-direction:column;gap:1.75rem}
+  .f-brand p{max-width:none}
+}
+@media(max-width:420px){
+  .trust-grid{grid-template-columns:1fr!important;gap:1.5rem!important}
+  .hero h1{font-size:1.8rem}
+}
 </style>
 </head>
 <body>
@@ -193,6 +242,7 @@ html{scroll-behavior:smooth}
       <li><a href="#preise">Preise</a></li>
       <li><a href="#kontakt" class="nav-btn">Kostenlos beraten</a></li>
     </ul>
+    <button class="menu-btn" aria-label="Menü öffnen" aria-expanded="false" onclick="toggleMenu()"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
   </div>
 </nav>
 
@@ -243,9 +293,9 @@ html{scroll-behavior:smooth}
 
 
 <!-- TRUST BADGES -->
-<section style="padding:2.75rem 2rem;background:var(--accent-light);border-top:1px solid var(--border)">
+<section class="trust-sec" style="padding:2.75rem 2rem;background:var(--accent-light);border-top:1px solid var(--border)">
   <div class="sec">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem">
+    <div class="trust-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem">
       <div style="text-align:center">
         <div style="display:flex;justify-content:center;margin-bottom:.75rem"><svg style="width:36px;height:36px;stroke:var(--accent);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <div style="font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:.25rem">Datenschutz</div>
@@ -330,9 +380,9 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- ÜBER UNS -->
-<section style="padding:6rem 2rem;background:var(--white)" id="ueber-uns">
+<section class="sec-pad" style="padding:6rem 2rem;background:var(--white)" id="ueber-uns">
   <div class="sec">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
       <div>
         <div class="eyebrow">Wer wir sind</div>
         <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;color:var(--ink);margin-bottom:1.5rem">Aufgewachsen<br>zwischen Feld und Stall.</h2>
@@ -384,13 +434,13 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- REFERENZEN -->
-<section style="padding:6rem 2rem;background:var(--white)" id="referenzen">
+<section class="sec-pad" style="padding:6rem 2rem;background:var(--white)" id="referenzen">
   <div class="sec">
     <div class="sh">
       <div class="eyebrow">Referenzen</div>
       <h2>Ausgewählte Projekte<br>aus der Praxis.</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.75rem">
+    <div class="ref-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.75rem">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;display:flex;flex-direction:column">
         <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem">Holzhandel · Kärnten</div>
         <h3 style="font-size:1.05rem;color:var(--ink);margin-bottom:.75rem">ERP-System für Holzhandelsunternehmen</h3>
@@ -444,7 +494,7 @@ html{scroll-behavior:smooth}
         <div class="fg"><label>Eure Nachricht</label><textarea name="nachricht" placeholder="Beschreibt kurz euer Anliegen. Wir melden uns persönlich."></textarea></div>
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_subject" value="Neue Anfrage über landai.at">
-        <label style="display:flex;gap:.6rem;align-items:flex-start;font-size:.78rem;color:var(--muted);line-height:1.6;cursor:pointer;margin-top:.3rem">
+        <label style="display:flex;gap:.6rem;align-items:flex-start;font-size:.78rem;color:var(--muted);line-height:1.6;cursor:pointer;margin-top:.3rem;text-transform:none;letter-spacing:0;font-weight:400">
           <input type="checkbox" required style="margin-top:.25rem;accent-color:var(--accent);flex-shrink:0">
           <span>Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. Details in der <a href="datenschutz.html" target="_blank" style="color:var(--accent)">Datenschutzerkl&#228;rung</a>.</span>
         </label>
@@ -455,13 +505,13 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- IMPRESSUM -->
-<section style="padding:5rem 2rem;background:var(--white)" id="impressum">
+<section class="sec-pad" style="padding:5rem 2rem;background:var(--white)" id="impressum">
   <div class="sec">
     <div class="sh">
       <div class="eyebrow">Rechtliches</div>
       <h2>Impressum</h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:900px">
+    <div class="imp-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:900px">
       <div>
         <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle);margin-bottom:.85rem">Unternehmensangaben</div>
         <div style="font-size:.9rem;line-height:2;color:var(--ink2)">
@@ -616,6 +666,8 @@ async function formSend(e){
     alert("Senden fehlgeschlagen. Bitte versucht es erneut oder schreibt uns direkt an office@landai.at");
   }
 }
+function toggleMenu(){const n=document.querySelector("nav");const b=document.querySelector(".menu-btn");const open=n.classList.toggle("open");b.setAttribute("aria-expanded",open?"true":"false");}
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>{document.querySelector("nav").classList.remove("open");document.querySelector(".menu-btn").setAttribute("aria-expanded","false");}));
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
 renderApps();
 </script>
